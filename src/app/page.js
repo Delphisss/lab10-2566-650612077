@@ -18,15 +18,19 @@ export default function RandomUserPage() {
     setIsLoading(false);
     const users = resp.data.results.map(cleanUser);
     setUsers(users);
-    localStorage.setItem("genAmount", genAmount);
+    localStorage.setItem("genAmount", genAmount.toString());
   };
 
   useEffect(() => {
     const genAmountFromLocalStorage = localStorage.getItem("genAmount");
     if (genAmountFromLocalStorage) {
-      setGenAmount(genAmountFromLocalStorage);
+      setGenAmount(parseInt(genAmountFromLocalStorage, 10));
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("genAmount", genAmount.toString());
+  }, [genAmount]);
 
   return (
     <div style={{ maxWidth: "700px" }} className="mx-auto">
