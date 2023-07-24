@@ -24,7 +24,7 @@ export default function RandomUserPage() {
   useEffect(() => {
     const genAmountFromLocalStorage = localStorage.getItem("genAmount");
     if (genAmountFromLocalStorage) {
-      setGenAmount(parseInt(genAmountFromLocalStorage, 10));
+      setGenAmount(genAmountFromLocalStorage);
     }
   }, []);
 
